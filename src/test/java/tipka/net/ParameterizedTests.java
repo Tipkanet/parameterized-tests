@@ -50,7 +50,7 @@ public class ParameterizedTests {
         page.assertThatPageContainsTheHeadline(menuItems);
     }
 
-    @MethodSource("dataForWithMethodSource")
+    @MethodSource("dataForMethodSource")
     @ParameterizedTest
     void fillMessageFormTest (int caseNumber, List<String> stringArray, int cardNumber) {
         switch (caseNumber) {
@@ -67,7 +67,7 @@ public class ParameterizedTests {
         }
     }
 
-    static Stream<Arguments> dataForWithMethodSource () {
+    static Stream<Arguments> dataForMethodSource() {
         return Stream.of(
                 Arguments.of(
                         1,
