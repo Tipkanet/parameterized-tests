@@ -24,6 +24,7 @@ allure {
 
 dependencies {
     testImplementation(
+            "org.aspectj:aspectjweaver:1.9.6",
             "com.codeborne:selenide:$selenideVersion",
             "io.qameta.allure:allure-selenide:$allureVersion",
             "org.junit.jupiter:junit-jupiter:$junitVersion")
@@ -35,14 +36,16 @@ dependencies {
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
-//    sourceCompatibility = 11
-//    targetCompatibility = 11
 }
 
-test {
+tasks.withType(Test) {
     useJUnitPlatform()
-}
 
-//tasks.withType(Test) {
-//    useJUnitPlatform()
-//}
+    testLogging {
+        lifecycle {
+//            events "started", "failed"
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}

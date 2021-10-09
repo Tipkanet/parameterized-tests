@@ -1,25 +1,18 @@
 package tipka.net;
 
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
 import tipka.net.domain.MenuItems;
+import tipka.net.helpers.TestBase;
 import tipka.net.pages.QuestlabMainPage;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class ParameterizedTestsWithStep {
+public class ParameterizedTestsThatShouldPassed extends TestBase {
 
     private QuestlabMainPage page = new QuestlabMainPage();
-
-    @BeforeAll
-    static void beforeAll() {
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub/"; // set comment mark for local build
-        Configuration.startMaximized = true;
-    }
 
     @ValueSource(strings = {
             "spelu-noteikumi",
@@ -41,7 +34,7 @@ public class ParameterizedTestsWithStep {
             "contacts, Контакты, Testing the 'Contacts'-page"
             }
     )
-    @ParameterizedTest(name = "{2}")
+    @ParameterizedTest(name = "{1}")
     void testWithCsvSource (String menuItems, String headline) {
         page.assertThatPageContainsTheHeadline(menuItems, headline);
     }
