@@ -2,23 +2,22 @@ package tipka.net;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
 import tipka.net.domain.MenuItems;
 import tipka.net.pages.QuestlabMainPage;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-@Disabled
-public class ParameterizedTests {
+public class ParameterizedTestsWithStep {
 
     private QuestlabMainPage page = new QuestlabMainPage();
 
     @BeforeAll
     static void beforeAll() {
-//        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub/"; // set comment mark for local build
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub/"; // set comment mark for local build
         Configuration.startMaximized = true;
     }
 
